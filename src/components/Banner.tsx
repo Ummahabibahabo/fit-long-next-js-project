@@ -4,7 +4,7 @@ import { FiArrowDown } from "react-icons/fi";
 
 const Banner = () => {
   return (
-    <div className="flex flex-col items-center justify-between rounded-xl bg-[#222630] p-6 shadow-2xl sm:flex-row sm:p-8 lg:p-10 gap-10">
+    <div className="flex flex-col items-center justify-between rounded-xl bg-[#15171D] p-6 shadow-2xl sm:flex-row sm:p-8 lg:p-10 gap-10">
       <div className="space-y-5">
         <h5 className="text-[14px] font-bold text-[#C2F800]">
           WORKOUT LIBRARY

@@ -40,18 +40,18 @@ const Navbar = () => {
         </ul>
 
         {/* Right Side */}
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex items-center gap-4 sm:gap-6 font-bold">
           {/* Plan */}
           <div className="flex items-center gap-2 sm:gap-3">
             <span>Plan</span>
 
-            <button className="flex h-7 w-7 items-center justify-center rounded-full bg-[#b5ff00] p-0 text-[12px] font-bold leading-none text-black sm:h-8 sm:w-8 sm:text-[13px]">
+            <button className="flex h-7 w-7 items-center justify-center rounded-full bg-[#b5ff00] p-0 text-[12px] text-black sm:h-8 sm:w-8 sm:text-[13px]">
               0
             </button>
           </div>
 
           {/* Saved */}
-          <div className="flex items-center gap-2 text-[#8c8f95] sm:gap-3">
+          <div className="flex items-center gap-2 text-[#8c8f95] sm:gap-3 font-bold">
             <span>Saved</span>
 
             <button className="flex h-7 w-7 items-center justify-center rounded-full border border-[#303238] p-0 text-[12px] leading-none sm:h-8 sm:w-8 sm:text-[13px]">
