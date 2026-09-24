@@ -32,11 +32,11 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <ul className="hidden items-center gap-1 sm:flex">
-          <li className="rounded-full bg-[#183000] px-4 py-1.5 font-medium text-[#b5ff00]">
+          <li className="rounded-full bg-[#183000] px-4 py-1.5 font-semibold text-[#b5ff00]">
             Workouts
           </li>
 
-          <li className="px-4 py-1.5 text-[#8c8f95]">My Plan</li>
+          <li className="px-4 py-1.5 text-[#8c8f95] font-semibold">My Plan</li>
         </ul>
 
         {/* Right Side */}

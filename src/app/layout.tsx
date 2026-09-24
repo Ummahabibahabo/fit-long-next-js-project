@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="container mx-auto px-4 py-4 lg:px-10 lg:py-10">
         <Navbar></Navbar>
-        {children}
+        <div className="mt-20">{children}</div>
       </body>
     </html>
   );
