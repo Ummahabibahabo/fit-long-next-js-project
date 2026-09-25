@@ -38,9 +38,9 @@ const Navbar = () => {
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-1 sm:flex">
           <Link
-            href="/workOuts"
+            href="/"
             className={
-              pathname === "/workOuts"
+              pathname === "/"
                 ? "rounded-full bg-[#183000] px-4 py-1.5 font-semibold text-[#b5ff00]"
                 : "px-4 py-1.5 font-semibold text-[#8c8f95]"
             }
@@ -102,10 +102,10 @@ const Navbar = () => {
       {menuOpen && (
         <div className="mt-4 flex flex-col gap-2 border-t border-[#24262a] px-4 pt-3 sm:hidden">
           <Link
-            href="/workOuts"
+            href="/"
             onClick={() => setMenuOpen(false)}
             className={
-              pathname === "/workOuts"
+              pathname === "/"
                 ? "rounded-full bg-[#183000] px-4 py-2 font-medium text-[#b5ff00]"
                 : "px-4 py-2 text-[#8c8f95]"
             }

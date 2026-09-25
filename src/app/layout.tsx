@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Banner from "@/components/Banner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,9 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="bg-black">
         <div className="container mx-auto px-4 py-4 lg:px-10 lg:py-10">
           <Navbar></Navbar>
-          <div className="mt-20 mb-20">
-            <Banner></Banner>
-          </div>
+
           <div className="mt-20 mb-20">{children}</div>
 
           <Footer></Footer>
