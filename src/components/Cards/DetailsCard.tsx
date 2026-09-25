@@ -1,8 +1,9 @@
 import Image from "next/image";
 import { LibraryTypes } from "../types";
 import { CiStar } from "react-icons/ci";
-import { BiCalendarPlus } from "react-icons/bi";
+
 import { LuBookMarked } from "react-icons/lu";
+import AddPlanButton from "../Button/AddPlanButton";
 
 interface DetailsCardProps {
   detailsData: LibraryTypes;
@@ -165,18 +166,7 @@ const DetailsCard = ({ detailsData }: DetailsCardProps) => {
           {/* ================= BUTTONS ================= */}
           <div className="mt-6 flex flex-wrap gap-3">
             {/* Add to Today's Plan */}
-            <button
-              type="button"
-              className="group flex items-center gap-2 rounded-lg bg-[#C2F800] px-4 py-2.5 text-[13px] font-semibold text-black shadow-[0_0_15px_rgba(194,248,0,0.12)] transition-all duration-200 hover:bg-[#D4FF36] hover:shadow-[0_0_20px_rgba(194,248,0,0.25)]"
-            >
-              <BiCalendarPlus
-                size={17}
-                strokeWidth={2.2}
-                className="transition-transform duration-200 group-hover:rotate-6"
-              />
-
-              <span>Add to today's plan</span>
-            </button>
+            <AddPlanButton detailsData={detailsData}></AddPlanButton>
 
             {/* Save for Later */}
             <button

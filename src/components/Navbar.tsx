@@ -1,18 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import Logo from "@/app/assests/logo.png";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { WorksOutContext } from "@/context/WorksOutProvider";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeButton, setActiveButton] = useState<"plan" | "saved">("plan");
 
   const pathname = usePathname();
-
+  const { plan } = useContext(WorksOutContext);
   return (
     <nav className="fixed left-0 right-0 top-0 z-50 border-b-2 border-[#24262a] bg-black pb-4 text-white sm:pb-5">
       {/* Main Navbar */}
@@ -74,7 +75,7 @@ const Navbar = () => {
                     : "border border-[#303238] text-[#8c8f95]"
                 }`}
               >
-                0
+                {plan.length}
               </span>
             </div>
           </Link>

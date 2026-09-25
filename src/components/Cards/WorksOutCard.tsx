@@ -1,10 +1,16 @@
+"use client";
+
 import Image from "next/image";
-import { LibraryTypes } from "../types";
+import Link from "next/link";
+import { useContext } from "react";
+import { toast } from "react-toastify";
 import { IoMdTime } from "react-icons/io";
+import { CiStar } from "react-icons/ci";
 
 import KcalIcon from "@/app/assests/Vector.png";
-import { CiStar } from "react-icons/ci";
-import Link from "next/link";
+import { WorksOutContext } from "@/context/WorksOutProvider";
+import { LibraryTypes } from "../types";
+
 interface WorksOutCardProps {
   library: LibraryTypes;
 }
@@ -20,9 +26,27 @@ const WorksOutCard = ({ library }: WorksOutCardProps) => {
     rating,
     id,
   } = library;
+
+  const { plan } = useContext(WorksOutContext);
+
+  const handleCardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const isAlreadyAdded = plan.some((planData) => planData.id === library.id);
+
+    if (isAlreadyAdded) {
+      e.preventDefault();
+
+      toast.warning(`This workout is already added to your plan!`);
+
+      return;
+    }
+
+    toast.success(`Opening ${library.name}...`);
+  };
+
   return (
-    <Link href={`/workOuts/${id}`}>
+    <Link href={`/workOuts/${id}`} onClick={handleCardClick} className="block">
       <div className="space-y-3 rounded-xl border border-gray-800 bg-[#20242E] shadow-2xl">
+        {/* Image */}
         <div className="h-[380px] overflow-hidden rounded-xl">
           <Image
             src={image}
@@ -33,28 +57,35 @@ const WorksOutCard = ({ library }: WorksOutCardProps) => {
           />
         </div>
 
+        {/* Content */}
         <div className="space-y-2 p-4">
-          <div className="flex gap-2">
+          {/* Muscle Groups */}
+          <div className="flex flex-wrap gap-2">
             {muscleGroups.map((muscle) => (
-              <button
-                className="rounded-lg bg-[#C2F800] px-2.5 py-1 text-xs font-bold text-black"
+              <span
                 key={muscle}
+                className="rounded-lg bg-[#C2F800] px-2.5 py-1 text-xs font-bold text-black"
               >
                 {muscle}
-              </button>
+              </span>
             ))}
           </div>
 
-          <h1 className="text-base font-bold text-white uppercase">{name}</h1>
+          {/* Workout Name */}
+          <h1 className="text-base font-bold uppercase text-white">{name}</h1>
 
+          {/* Equipment */}
           <p className="text-xs text-[#9CA3AF]">{equipment}</p>
 
+          {/* Info */}
           <div className="flex justify-between text-xs text-[#9CA3AF]">
+            {/* Duration */}
             <div className="flex items-center gap-2">
               <IoMdTime className="h-4 w-4 shrink-0" />
               <p>{duration} min</p>
             </div>
 
+            {/* Calories */}
             <div className="flex items-center gap-2">
               <Image
                 src={KcalIcon}
@@ -66,6 +97,7 @@ const WorksOutCard = ({ library }: WorksOutCardProps) => {
               <p>{caloriesBurned} kcal</p>
             </div>
 
+            {/* Rating */}
             <div className="flex items-center gap-2">
               <CiStar className="h-4 w-4 shrink-0" />
               <p>{rating}</p>
