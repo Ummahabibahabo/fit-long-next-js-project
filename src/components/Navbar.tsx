@@ -66,34 +66,22 @@ const Navbar = () => {
         {/* Right Side */}
         <div className="flex items-center gap-4 font-bold sm:gap-6">
           {/* Plan */}
-          <Link href="/my-plan" onClick={() => setActiveButton("plan")}>
+          <Link href="/my-plan">
             <div className="flex cursor-pointer items-center gap-2 sm:gap-3">
               <span>Plan</span>
 
-              <span
-                className={`flex h-7 w-7 items-center justify-center rounded-full text-[12px] sm:h-8 sm:w-8 sm:text-[13px] ${
-                  activeButton === "plan"
-                    ? "bg-[#b5ff00] text-black"
-                    : "border border-[#303238] text-[#8c8f95]"
-                }`}
-              >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#ccff00] text-[12px] text-black sm:h-8 sm:w-8 sm:text-[13px]">
                 {plan.length}
               </span>
             </div>
           </Link>
 
           {/* Saved */}
-          <Link href="/my-plan" onClick={() => setActiveButton("saved")}>
+          <Link href="/my-plan">
             <div className="flex cursor-pointer items-center gap-2 font-bold text-[#8c8f95] sm:gap-3">
               <span>Saved</span>
 
-              <span
-                className={`flex h-7 w-7 items-center justify-center rounded-full text-[12px] sm:h-8 sm:w-8 sm:text-[13px] ${
-                  activeButton === "saved"
-                    ? "bg-[#b5ff00] text-black"
-                    : "border border-[#303238] text-[#8c8f95]"
-                }`}
-              >
+              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-[#303238] text-[12px] text-[#8c8f95] sm:h-8 sm:w-8 sm:text-[13px]">
                 {saved.length}
               </span>
             </div>

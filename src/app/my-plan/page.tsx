@@ -14,9 +14,8 @@ const MyPlanPage = () => {
     "duration",
   );
 
-  // =========================
   // SORT FUNCTION
-  // =========================
+
   const sortData = (data: typeof plan) => {
     return [...data].sort((a, b) => {
       if (sortBy === "duration") {
@@ -35,28 +34,24 @@ const MyPlanPage = () => {
     });
   };
 
-  // =========================
   // SORT PLAN & SAVED
-  // =========================
+
   const sortedPlan = sortData(plan);
   const sortedSaved = sortData(saved);
 
-  // =========================
   // CURRENT DATA
-  // =========================
+
   const currentData = selected ? sortedSaved : sortedPlan;
 
-  // =========================
   // TOTAL MINUTES
-  // =========================
+
   const totalMinutes = currentData.reduce(
     (total, item) => total + item.duration,
     0,
   );
 
-  // =========================
   // TOTAL CALORIES
-  // =========================
+
   const totalCalories = currentData.reduce(
     (total, item) => total + item.caloriesBurned,
     0,
@@ -64,18 +59,18 @@ const MyPlanPage = () => {
 
   return (
     <div>
-      {/* =========================================
-          PAGE HEADER
-      ========================================= */}
+      {
+        // PAGE HEADER
+      }
       <h1 className="text-[30px] font-bold text-white">MY PLAN</h1>
 
       <p className="text-[14px] text-[#8A92A0]">
         Cap of five lifts for today. Finish them, then load more.
       </p>
 
-      {/* =========================================
-          STATS CARD
-      ========================================= */}
+      {
+        // STATS CARD
+      }
       <div className="mt-10 rounded-xl border border-dotted border-[#232732] bg-[#14171E] px-6 py-7">
         <div className="flex items-center justify-between">
           {/* Exercises */}
@@ -109,13 +104,13 @@ const MyPlanPage = () => {
         </div>
       </div>
 
-      {/* =========================================
-          TABS + SORT
-      ========================================= */}
+      {
+        // TABS + SORT
+      }
       <div className="mt-10 flex items-center justify-between">
-        {/* =====================================
-            TODAY / SAVED TABS
-        ===================================== */}
+        {
+          // TODAY / SAVED TABS
+        }
         <div className="rounded-[45px] border-4 border-[#292E3A] bg-[#151820] p-2 font-bold text-white">
           {/* Today's Plan */}
           <button
@@ -144,9 +139,9 @@ const MyPlanPage = () => {
           </button>
         </div>
 
-        {/* =====================================
-            SORT
-        ===================================== */}
+        {
+          // SORT
+        }
         <div className="flex items-center gap-3">
           <span className="text-sm font-medium text-[#8A92A0]">Sort By</span>
 
@@ -179,9 +174,9 @@ const MyPlanPage = () => {
         </div>
       </div>
 
-      {/* =========================================
-          PLAN / SAVED CARDS
-      ========================================= */}
+      {
+        // PLAN / SAVED CARDS
+      }
       <div className="mt-6">
         {currentData.length === 0 ? (
           <EmptyPlanState />
