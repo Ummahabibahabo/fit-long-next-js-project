@@ -2,6 +2,7 @@
 import PlanSavedDataCard from "@/components/Cards/PlanSavedDataCard";
 import { WorksOutContext } from "@/context/WorksOutProvider";
 import { useContext, useState } from "react";
+import EmptyPlanState from "./EmptyPlanState";
 
 const MyPlanPage = () => {
   const { plan, saved } = useContext(WorksOutContext);
@@ -81,15 +82,17 @@ const MyPlanPage = () => {
         <h1>sort</h1>
       </div>
       <div>
-        {currentData.map((planData) => {
-          return (
+        {currentData.length === 0 ? (
+          <EmptyPlanState />
+        ) : (
+          currentData.map((planData) => (
             <PlanSavedDataCard
               key={planData.id}
               planData={planData}
               type={selected ? "saved" : "plan"}
-            ></PlanSavedDataCard>
-          );
-        })}
+            />
+          ))
+        )}
       </div>
     </div>
   );
