@@ -4,6 +4,7 @@ import { CiStar } from "react-icons/ci";
 
 import { LuBookMarked } from "react-icons/lu";
 import AddPlanButton from "../Button/AddPlanButton";
+import SaveButton from "../Button/SaveButton";
 
 interface DetailsCardProps {
   detailsData: LibraryTypes;
@@ -169,18 +170,7 @@ const DetailsCard = ({ detailsData }: DetailsCardProps) => {
             <AddPlanButton detailsData={detailsData}></AddPlanButton>
 
             {/* Save for Later */}
-            <button
-              type="button"
-              className="group flex items-center gap-2 rounded-lg border border-[#30343D] bg-[#161920] px-4 py-2.5 text-[13px] font-medium text-[#D1D5DB] transition-all duration-200 hover:border-[#C2F800] hover:bg-[#1C2028] hover:text-white"
-            >
-              <LuBookMarked
-                size={17}
-                strokeWidth={2}
-                className="transition-all duration-200 group-hover:fill-[#C2F800] group-hover:text-[#C2F800]"
-              />
-
-              <span>Save for later</span>
-            </button>
+            <SaveButton detailsData={detailsData}></SaveButton>
           </div>
         </div>
       </div>

@@ -2,13 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useContext } from "react";
+
 import { toast } from "react-toastify";
 import { IoMdTime } from "react-icons/io";
 import { CiStar } from "react-icons/ci";
 
 import KcalIcon from "@/app/assests/Vector.png";
-import { WorksOutContext } from "@/context/WorksOutProvider";
+
 import { LibraryTypes } from "../types";
 
 interface WorksOutCardProps {
@@ -27,19 +27,7 @@ const WorksOutCard = ({ library }: WorksOutCardProps) => {
     id,
   } = library;
 
-  const { plan } = useContext(WorksOutContext);
-
-  const handleCardClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const isAlreadyAdded = plan.some((planData) => planData.id === library.id);
-
-    if (isAlreadyAdded) {
-      e.preventDefault();
-
-      toast.warning(`This workout is already added to your plan!`);
-
-      return;
-    }
-
+  const handleCardClick = () => {
     toast.success(`Opening ${library.name}...`);
   };
 

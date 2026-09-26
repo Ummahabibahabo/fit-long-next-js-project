@@ -1,17 +1,32 @@
+"use client";
+
 import { WorksOutContext } from "@/context/WorksOutProvider";
 import { useContext } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { LibraryTypes } from "../types";
+
 interface RemoveCardProps {
   planData: LibraryTypes;
+  type: "plan" | "saved";
 }
-const RemoveCard = ({ planData }: RemoveCardProps) => {
-  const { setPlan } = useContext(WorksOutContext);
+
+const RemoveCard = ({ planData, type }: RemoveCardProps) => {
+  const { setPlan, setSaved } = useContext(WorksOutContext);
+
   const handleRemoveButton = () => {
-    setPlan((previousData) => {
-      return previousData.filter((data) => data.id !== planData.id);
-    });
+    if (type === "plan") {
+      setPlan((previousData) => {
+        return previousData.filter((data) => data.id !== planData.id);
+      });
+    }
+
+    if (type === "saved") {
+      setSaved((previousData) => {
+        return previousData.filter((data) => data.id !== planData.id);
+      });
+    }
   };
+
   return (
     <button
       onClick={handleRemoveButton}

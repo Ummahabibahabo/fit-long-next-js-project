@@ -3,17 +3,17 @@ import { LibraryTypes } from "../types";
 import KcalImg from "@/app/assests/Vector.png";
 import { IoMdTime } from "react-icons/io";
 import { CiStar } from "react-icons/ci";
-import { RxCross2 } from "react-icons/rx";
-import { IoCheckmark } from "react-icons/io5";
+
 import Link from "next/link";
 import RemoveCard from "./RemoveCard";
-import MarkAsButton from "./MarkAsButton";
+import MarkAsButton from "../Button/MarkAsButton";
 
 interface PlanSavedDataCardProps {
   planData: LibraryTypes;
+  type: "plan" | "saved";
 }
 
-const PlanSavedDataCard = ({ planData }: PlanSavedDataCardProps) => {
+const PlanSavedDataCard = ({ planData, type }: PlanSavedDataCardProps) => {
   return (
     <div className=" mt-10 flex w-full items-center justify-between gap-6 border border-[#232732] bg-[#14171E] px-4 py-3 rounded-xl shadow-lg">
       {/* Left Side */}
@@ -81,10 +81,10 @@ const PlanSavedDataCard = ({ planData }: PlanSavedDataCardProps) => {
         </Link>
 
         {/* Mark as Done */}
-        <MarkAsButton planData={planData}></MarkAsButton>
+        <MarkAsButton planData={planData} type={type}></MarkAsButton>
 
         {/* Close */}
-        <RemoveCard planData={planData}></RemoveCard>
+        <RemoveCard type={type} planData={planData}></RemoveCard>
       </div>
     </div>
   );

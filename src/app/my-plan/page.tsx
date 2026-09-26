@@ -1,12 +1,21 @@
 "use client";
 import PlanSavedDataCard from "@/components/Cards/PlanSavedDataCard";
 import { WorksOutContext } from "@/context/WorksOutProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const MyPlanPage = () => {
-  const { plan } = useContext(WorksOutContext);
-  const totalMinutes = plan.reduce((total, item) => total + item.duration, 0);
-  const totalCalories = plan.reduce(
+  const { plan, saved } = useContext(WorksOutContext);
+
+  const [selected, setSelected] = useState(false);
+  const handleSelectedButton = () => {
+    setSelected(!selected);
+  };
+  const currentData = selected ? saved : plan;
+  const totalMinutes = currentData.reduce(
+    (total, item) => total + item.duration,
+    0,
+  );
+  const totalCalories = currentData.reduce(
     (total, item) => total + item.caloriesBurned,
     0,
   );
@@ -21,7 +30,9 @@ const MyPlanPage = () => {
           {/* Exercises */}
           <div className="flex-1">
             <p className="text-sm text-gray-400">Exercises</p>
-            <p className="text-4xl font-bold text-lime-400">{plan.length}</p>
+            <p className="text-4xl font-bold text-lime-400">
+              {currentData.length}
+            </p>
           </div>
 
           <div className="h-14 w-px bg-[#252932]" />
@@ -44,11 +55,25 @@ const MyPlanPage = () => {
 
       <div className="flex items-center justify-between mt-10">
         <div className="p-4 rounded-[45px] bg-[#151820] border-4 border-[#292E3A] font-bold text-white">
-          <button className="flex-1 px-8 py-5 rounded-[30px] bg-[#20252E] border-4 border-[#2B303D] text-4xl">
+          <button
+            onClick={handleSelectedButton}
+            className={
+              selected
+                ? "flex-1 px-8 py-5 text-4xl text-[#8A92A0]"
+                : "flex-1 px-8 py-5 rounded-[30px] bg-[#20252E] border-4 border-[#2B303D] text-4xl"
+            }
+          >
             Today's Plan
           </button>
 
-          <button className="flex-1 px-8 py-5 text-4xl text-[#8A92A0]">
+          <button
+            onClick={handleSelectedButton}
+            className={
+              selected
+                ? "flex-1 px-8 py-5 rounded-[30px] bg-[#20252E] border-4 border-[#2B303D] text-4xl"
+                : "flex-1 px-8 py-5 text-4xl text-[#8A92A0]"
+            }
+          >
             Saved
           </button>
         </div>
@@ -56,11 +81,12 @@ const MyPlanPage = () => {
         <h1>sort</h1>
       </div>
       <div>
-        {plan.map((planData) => {
+        {currentData.map((planData) => {
           return (
             <PlanSavedDataCard
               key={planData.id}
               planData={planData}
+              type={selected ? "saved" : "plan"}
             ></PlanSavedDataCard>
           );
         })}
