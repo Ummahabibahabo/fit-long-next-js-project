@@ -1,9 +1,12 @@
 import WorksOutCard from "@/components/Cards/WorksOutCard";
 import { LibraryTypes } from "@/components/types";
+import { setTimeout } from "timers/promises";
 
 const getSingleData = async (): Promise<LibraryTypes[]> => {
   const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+  await setTimeout(4000);
   const data = await res.json();
+
   return data;
 };
 

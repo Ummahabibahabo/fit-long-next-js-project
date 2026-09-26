@@ -29,11 +29,13 @@ const Navbar = () => {
           </button>
 
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <Image src={Logo} alt="Fitlog Logo" width={25} height={25} />
+          <Link href={"/"}>
+            <div className="flex items-center gap-2">
+              <Image src={Logo} alt="Fitlog Logo" width={25} height={25} />
 
-            <span className="font-bold tracking-wide">FITLOG</span>
-          </div>
+              <span className="font-bold tracking-wide">FITLOG</span>
+            </div>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}

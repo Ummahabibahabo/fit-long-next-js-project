@@ -1,20 +1,22 @@
+import Link from "next/link";
+
 const EmptyPlanState = () => {
   return (
-    <div className="bg-[#0F1115] rounded-xl border border-dotted border-[#232732] min-h-[270px] flex flex-col items-center justify-center mt-10">
-      <h2 className="text-white text-[20px] font-bold tracking-wide">
+    <div className="mt-10 flex min-h-[270px] flex-col items-center justify-center rounded-xl border border-dotted border-[#232732] bg-[#0F1115]">
+      <h2 className="text-[20px] font-bold tracking-wide text-white">
         NOTHING HERE YET
       </h2>
 
-      <p className="text-[14px] text-[#8A92A0] mt-1">
+      <p className="mt-1 text-[14px] text-[#8A92A0]">
         Browse the library and add a lift to get today moving.
       </p>
 
-      <button
-        className="mt-5 px-6 py-3 rounded-full bg-[#C8FF00] text-black text-sm font-semibold
-        hover:bg-[#baf000] transition"
+      <Link
+        href="/"
+        className="mt-5 rounded-full bg-[#C8FF00] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#baf000]"
       >
         Go to workouts
-      </button>
+      </Link>
     </div>
   );
 };
